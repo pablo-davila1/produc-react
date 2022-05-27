@@ -19,7 +19,9 @@ public class Part06Request {
 
 	// TODO Create a StepVerifier that initially requests all values and expect 4 values to be received
 	StepVerifier requestAllExpectFour(Flux<User> flux) {
-		return null;
+		return StepVerifier.create(flux)
+				.expectNextCount(4)
+				.expectComplete();
 	}
 
 //========================================================================================
@@ -33,7 +35,9 @@ public class Part06Request {
 
 	// TODO Return a Flux with all users stored in the repository that prints automatically logs for all Reactive Streams signals
 	Flux<User> fluxWithLog() {
-		return null;
+		return repository
+				.findAll()
+				.log();
 	}
 
 //========================================================================================

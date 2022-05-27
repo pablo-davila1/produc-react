@@ -43,6 +43,10 @@ public class Part03StepVerifier {
 
 	// TODO Use StepVerifier to check that the flux parameter emits "foo" and "bar" elements then a RuntimeException error.
 	void expectFooBarError(Flux<String> flux) {
+		StepVerifier.create(flux)
+				.expectNext("foo","baar")
+					.verifyError(RuntimeException.class);
+
 		fail();
 	}
 
@@ -51,14 +55,18 @@ public class Part03StepVerifier {
 	// TODO Use StepVerifier to check that the flux parameter emits a User with "swhite"username
 	// and another one with "jpinkman" then completes successfully.
 	void expectSkylerJesseComplete(Flux<User> flux) {
-		fail();
+
+		StepVerifier.create(flux)
+				.expectNextMatches(user -> user.getUsername().equals("swhite")).expectNext();
 	}
 
 //========================================================================================
 
 	// TODO Expect 10 elements then complete and notice how long the test takes.
 	void expect10Elements(Flux<Long> flux) {
-		fail();
+		StepVerifier.create(flux)
+				.expectNextCount(10)
+				.verifyComplete();
 	}
 
 //========================================================================================
