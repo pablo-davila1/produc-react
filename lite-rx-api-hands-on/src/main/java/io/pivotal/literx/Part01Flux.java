@@ -34,8 +34,8 @@ public class Part01Flux {
 
 	// TODO Create a Flux from a List that contains 2 values "foo" and "bar"
 	Flux<String> fooBarFluxFromList() {
+
 		ArrayList<String> LISTA = new ArrayList<String>();
-		// Añade el elemento al ArrayList
 		LISTA.add("foo");
 		LISTA.add("bar");
 

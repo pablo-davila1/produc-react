@@ -1,4 +1,4 @@
-/*
+	/*
  * Copyright 2002-2016 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,9 @@ import java.util.function.Supplier;
 
 import io.pivotal.literx.domain.User;
 import reactor.core.publisher.Flux;
+import reactor.test.StepVerifier;
 
-/**
+	/**
  * Learn how to use StepVerifier to test Mono, Flux or any other kind of Reactive Streams Publisher.
  *
  * @author Sebastien Deleuze
@@ -33,7 +34,9 @@ public class Part03StepVerifier {
 
 	// TODO Use StepVerifier to check that the flux parameter emits "foo" and "bar" elements then completes successfully.
 	void expectFooBarComplete(Flux<String> flux) {
-		fail();
+		StepVerifier.create(flux)
+						.expectNext("foo", "bar")
+								.verifyComplete();
 	}
 
 //========================================================================================
